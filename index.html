@@ -91,18 +91,6 @@
 
         .signature svg { width: 100%; height: auto; display: block; }
 
-        .signature-caption {
-            display: flex;
-            justify-content: space-between;
-            max-width: 300px;
-            margin: 2px auto 0 auto;
-            font-size: 0.82rem;
-            padding: 0 6px;
-        }
-
-        .signature-caption .conscious { color: var(--gold-bright); font-weight: 600; }
-        .signature-caption .subconscious { color: var(--teal-bright); font-weight: 600; }
-
         /* Main Hero Card */
         .hero-card {
             background: linear-gradient(165deg, var(--surface), #150f1a 65%);
@@ -347,42 +335,50 @@
             <div class="eyebrow">LIBAM Management &amp; Consultancy</div>
         </header>
 
-        <!-- Iceberg signature: conscious tip / subconscious depth -->
+        <!-- Iceberg signature: one connected mass, split at the waterline into
+             the visible tip (conscious mind) and the submerged bulk (subconscious mind) -->
         <div class="signature">
-            <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="የበረዶ ግግር ምስል — ንቁ እና ድብቅ አእምሮን የሚወክል">
+            <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="የበረዶ ግግር ምስል — የላይኛው ጫፍ ንቁ አእምሮን፣ የውሃ ውስጡ ደግሞ ድብቅ አእምሮን ይወክላል">
                 <defs>
                     <linearGradient id="tipGrad" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stop-color="#f3ead9"/>
                         <stop offset="100%" stop-color="#cda05a"/>
                     </linearGradient>
                     <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#3c7079" stop-opacity="0.85"/>
-                        <stop offset="100%" stop-color="#132226" stop-opacity="0.55"/>
+                        <stop offset="0%" stop-color="#3c7079" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#132226" stop-opacity="0.6"/>
                     </linearGradient>
                     <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stop-color="#6fb3ae" stop-opacity="0.35"/>
                         <stop offset="100%" stop-color="#6fb3ae" stop-opacity="0"/>
                     </linearGradient>
+                    <!-- single connected iceberg outline -->
+                    <clipPath id="icebergClip">
+                        <polygon points="200,25 235,112 300,132 355,225 250,255 150,255 45,225 100,132 165,112"/>
+                    </clipPath>
                 </defs>
 
                 <!-- deep water glow -->
-                <rect x="0" y="108" width="400" height="152" fill="url(#waterGrad)"/>
+                <rect x="0" y="112" width="400" height="148" fill="url(#waterGrad)"/>
 
-                <!-- submerged mass (subconscious) -->
-                <polygon points="200,95 300,115 355,220 250,255 150,255 45,220 100,115"
-                         fill="url(#bodyGrad)" stroke="#6fb3ae" stroke-opacity="0.35" stroke-width="1"/>
-
-                <!-- visible tip (conscious) -->
-                <polygon points="200,30 232,100 168,100" fill="url(#tipGrad)"/>
+                <!-- the whole iceberg, one shape, colored above/below the waterline -->
+                <g clip-path="url(#icebergClip)">
+                    <rect x="0" y="0" width="400" height="112" fill="url(#tipGrad)"/>
+                    <rect x="0" y="112" width="400" height="148" fill="url(#bodyGrad)"/>
+                </g>
+                <polygon points="200,25 235,112 300,132 355,225 250,255 150,255 45,225 100,132 165,112"
+                         fill="none" stroke="#6fb3ae" stroke-opacity="0.3" stroke-width="1"/>
 
                 <!-- waterline -->
-                <path d="M0,108 Q50,100 100,108 T200,108 T300,108 T400,108"
-                      fill="none" stroke="#ecc985" stroke-width="1.5" stroke-opacity="0.55"/>
+                <path d="M0,112 Q50,104 100,112 T200,112 T300,112 T400,112"
+                      fill="none" stroke="#ecc985" stroke-width="1.5" stroke-opacity="0.6"/>
+
+                <!-- labels placed directly on their region -->
+                <text x="200" y="14" text-anchor="middle" font-size="15" font-weight="600"
+                      font-family="'Noto Sans Ethiopic', sans-serif" fill="#ecc985">ንቁ አእምሮ</text>
+                <text x="200" y="205" text-anchor="middle" font-size="15" font-weight="600"
+                      font-family="'Noto Sans Ethiopic', sans-serif" fill="#8fc9c4">ድብቅ አእምሮ</text>
             </svg>
-            <div class="signature-caption">
-                <span class="conscious">ንቁ አእምሮ</span>
-                <span class="subconscious">ድብቅ አእምሮ</span>
-            </div>
         </div>
 
         <!-- Main Content Box -->
